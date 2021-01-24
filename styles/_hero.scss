@@ -81,11 +81,10 @@
         }
 
         .mobile-menu {
-            &[aria-expanded=false] {
-                display: none;
-            }
+            display: none;
 
-            &[aria-expanded=true] {
+
+            &.active {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
@@ -95,7 +94,7 @@
                 transform: translate(-50%, 120%);
                 z-index: 999;
                 width: 100%;
-                height: 70vh;
+                height: 60vh;
 
                 .mobile-links {
                     text-align: center;
@@ -209,7 +208,7 @@
     .grid-two-col {
         .text {
             h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
 
                 @include mediaQuery(desktop-sm) {
                     font-size: 2.5rem;

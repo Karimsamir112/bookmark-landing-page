@@ -68,7 +68,7 @@ a {
         width: Min(548px, 100%);
         margin: 0 auto;
 
-        h1 {
+        h2 {
             @include mediaQuery(tablet) {
                 font-size: 2rem;
             }

@@ -30,12 +30,12 @@ function toggleMobileNav() {
     const naviconState = navicon.getAttribute("aria-expanded")
 
     if (naviconState == "false") {
-        setAttrToTrue([navicon, mobileNav]);
-        addActiveClass([logo, mobileNavOverlay]);
+        setAttrToTrue([navicon]);
+        addActiveClass([logo, mobileNav, mobileNavOverlay]);
         disableScrolling();
     } else {
-        setAttrToFalse([navicon, mobileNav]);
-        removeActiveClass([logo, mobileNavOverlay]);
+        setAttrToFalse([navicon]);
+        removeActiveClass([logo, mobileNav, mobileNavOverlay]);
         enableScrolling();
     }
 }
@@ -106,8 +106,8 @@ function toggleAccordion(selectedAccordion) {
 
 emailField.addEventListener("input", () => {
     if (!emailField.value) {
-        emailField.setAttribute("aria-invalid", "");
-        emailField.setAttribute("aria-describedby", "");
+        emailField.removeAttribute("aria-invalid");
+        emailField.removeAttribute("aria-describedby");
 
         resultText.classList.remove("valid");
         resultText.classList.remove("error");
@@ -159,6 +159,7 @@ function showError(err) {
 
 function showValid() {
     emailField.setAttribute("aria-invalid", "false");
+    emailField.setAttribute("aria-describedby", "result");
 
     resultText.classList.remove("error");
     resultText.classList.add("valid");

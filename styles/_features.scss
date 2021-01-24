@@ -91,7 +91,7 @@
                         order: 1;
                     }
 
-                    h1 {
+                    h2 {
                         @include mediaQuery(desktop-sm) {
                             font-size: 2rem;
                         }
