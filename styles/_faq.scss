@@ -4,55 +4,50 @@
     .accordion-container {
         width: Min(550px, 100%);
         margin: 0 auto;
+        position: relative;
 
         .accordion {
-            border-bottom: 1px solid $grayishBlue;
-            overflow: hidden;
-            position: relative;
+            padding: 1rem 1rem 1rem 0;
             text-align: left;
+            width: 100%;
+            border-bottom: 1px solid $grayishBlue;
+            cursor: pointer;
+
+            @include mediaQuery(tablet) {
+                font-size: 1rem;
+            }
+
+            &:hover {
+                color: $softRed;
+            }
+
+            svg {
+                float: right;
+                transition: .2s ease;
+            }
 
             &[aria-expanded=true] {
-                padding-bottom: 1rem;
+                border-bottom: none;
 
-                button {
-                    svg {
-                        transform: rotate(180deg);
-
-                        path {
-                            stroke: $softRed;
-                        }
+                svg {
+                    transform: rotate(180deg);
+            
+                    path {
+                        stroke: $softRed;
                     }
                 }
             }
+        }
 
-            &[aria-expanded=false] {
-                padding-bottom: 0;
-            }
+        .accordion-content {
+            text-align: left;
+            font-size: .8rem;
+            height: 0;
+            transition: .2s ease;
+            overflow: hidden;
 
-            button {
-                width: 100%;
-                padding: 1rem 1rem 1rem 0;
-                text-align: left;
-                cursor: pointer;
-
-                @include mediaQuery(tablet) {
-                    font-size: 1rem;
-                }
-
-                svg {
-                    float: right;
-                    transition: .2s ease;
-                }
-
-                &:hover {
-                    color: $softRed;
-                }
-            }
-
-            p {
-                font-size: .8rem;
-                max-height: 0;
-                transition: .2s ease;
+            &.active {
+                border-bottom: 1px solid $grayishBlue;
             }
         }
     }  

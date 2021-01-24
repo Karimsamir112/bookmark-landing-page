@@ -30,40 +30,14 @@ function toggleMobileNav() {
     const naviconState = navicon.getAttribute("aria-expanded")
 
     if (naviconState == "false") {
-        setAttrToTrue([navicon]);
+        ariaExpandedTrue(navicon);
         addActiveClass([logo, mobileNav, mobileNavOverlay]);
         disableScrolling();
     } else {
-        setAttrToFalse([navicon]);
+        ariaExpandedFalse(navicon);
         removeActiveClass([logo, mobileNav, mobileNavOverlay]);
         enableScrolling();
     }
-}
-
-function setAttrToTrue(elem) {
-    elem.forEach(el => el.setAttribute("aria-expanded", "true"))
-}
-
-function setAttrToFalse(elem) {
-    elem.forEach(el => el.setAttribute("aria-expanded", "false"))
-}
-
-function addActiveClass(elem) {
-    elem.forEach(el => el.classList.add("active"))
-}
-
-function removeActiveClass(elem) {
-    elem.forEach(el => el.classList.remove("active"))
-}
-
-const disableScrolling = () => {
-    body.style.height = 100 + "vh";
-    body.style.overflowY = "hidden"
-}
-
-const enableScrolling = () => {
-    body.style.height = "auto";
-    body.style.overflowY = "auto";
 }
 
 function moveSlider(tabBtn) {
@@ -76,31 +50,33 @@ function moveSlider(tabBtn) {
 }
 
 function updateTabState(currentBtn) {
-    tabButtons.forEach(btn => btn.setAttribute("aria-selected", "false"));
-
-    currentBtn.setAttribute("aria-selected", "true");
+    tabButtons.forEach(btn => ariaSelectedFalse(btn));
+    ariaSelectedTrue(currentBtn);
 }
 
 function toggleAccordion(selectedAccordion) {
     const content = selectedAccordion.nextElementSibling;
-    const parentContainer = selectedAccordion.parentElement;
+    const expandedState = selectedAccordion.getAttribute("aria-expanded");
 
-    if (content.style.maxHeight) {
-        content.style.maxHeight = null;
-        setAttrToFalse([parentContainer]);
-    } else {
-        //closes the unselected accordions
+    if (expandedState == "false") {
+        //closes unselected accordions
         accordionButtons.forEach(accordion => {
-            const accordionBtn = accordion.firstElementChild;
+            if (accordion != selectedAccordion) {
+                const content = accordion.nextElementSibling;
 
-            if (accordionBtn != selectedAccordion) {
-                setAttrToFalse([accordion]);
-                accordionBtn.nextElementSibling.style.maxHeight = null;
+                ariaExpandedFalse(accordion);
+                removeActiveClass([content]);
+                content.style.height = null;
             }
         })
-
-        content.style.maxHeight = content.scrollHeight + "px";
-        setAttrToTrue([parentContainer]);
+        //opens the current accordion
+        ariaExpandedTrue(selectedAccordion);
+        addActiveClass([content]);
+        content.style.height = content.scrollHeight + 16 + "px";
+    } else {
+        ariaExpandedFalse(selectedAccordion);
+        removeActiveClass([content]);
+        content.style.height = null;
     }
 }
 
@@ -136,16 +112,16 @@ function validateEmail(userEmail) {
 }
 
 function showError(err) {
-    emailField.setAttribute("aria-invalid", "true");
+    ariaInvalidTrue(emailField);
 
     switch (err) {
         case "empty":
-            emailField.setAttribute("aria-describedby", "result")
+            ariaFormResult(emailField);
             resultText.textContent = "Please enter your email address";
             errorText();
             break;
         case "invalid":
-            emailField.setAttribute("aria-describedby", "result")
+            ariaFormResult(emailField);
             resultText.textContent = "Whoops, make sure it's an email";
             errorText();
             break;
@@ -158,13 +134,41 @@ function showError(err) {
 }
 
 function showValid() {
-    emailField.setAttribute("aria-invalid", "false");
-    emailField.setAttribute("aria-describedby", "result");
+    ariaInvalidFalse(emailField);
+    ariaFormResult(emailField);
 
     resultText.classList.remove("error");
     resultText.classList.add("valid");
 
     resultText.textContent = "Valid email address";
+}
+
+const ariaExpandedTrue = elem => elem.setAttribute("aria-expanded", "true");
+
+const ariaExpandedFalse = elem => elem.setAttribute("aria-expanded", "false");
+
+const ariaSelectedTrue = elem => elem.setAttribute("aria-selected", "true");
+
+const ariaSelectedFalse = elem => elem.setAttribute("aria-selected", "false");
+
+const ariaInvalidTrue = elem => elem.setAttribute("aria-invalid", "true");
+
+const ariaInvalidFalse = elem => elem.setAttribute("aria-invalid", "false");
+
+const ariaFormResult = elem => elem.setAttribute("aria-describedby", "result");
+
+const addActiveClass = elem => elem.forEach(el => el.classList.add("active"));
+
+const removeActiveClass = elem => elem.forEach(el => el.classList.remove("active"));
+
+const disableScrolling = () => {
+    body.style.height = 100 + "vh";
+    body.style.overflowY = "hidden"
+}
+
+const enableScrolling = () => {
+    body.style.height = "auto";
+    body.style.overflowY = "auto";
 }
 
 footerLogo.addEventListener("click", e => {
@@ -209,8 +213,8 @@ function smoothScroll(target) {
 
 window.addEventListener("scroll", () => {
     if (window.pageYOffset > 800) {
-        backTop.style.opacity = ".7";
+        backTop.classList.add("show");
     } else {
-        backTop.style.opacity = "0";
+        backTop.classList.remove("show");
     }
 })

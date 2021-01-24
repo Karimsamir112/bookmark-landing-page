@@ -251,10 +251,16 @@ a {
       -ms-flex-align: center;
           align-items: center;
   opacity: 0;
+  pointer-events: none;
   cursor: pointer;
 }
 
-#back-to-top:hover {
+#back-to-top.show {
+  opacity: .7;
+  pointer-events: visible;
+}
+
+#back-to-top.show:hover {
   opacity: 1;
 }
 
@@ -737,60 +743,57 @@ a {
 .faq .accordion-container {
   width: Min(550px, 100%);
   margin: 0 auto;
+  position: relative;
 }
 
 .faq .accordion-container .accordion {
-  border-bottom: 1px solid #9194a1;
-  overflow: hidden;
-  position: relative;
-  text-align: left;
-}
-
-.faq .accordion-container .accordion[aria-expanded=true] {
-  padding-bottom: 1rem;
-}
-
-.faq .accordion-container .accordion[aria-expanded=true] button svg {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-}
-
-.faq .accordion-container .accordion[aria-expanded=true] button svg path {
-  stroke: #fa5757;
-}
-
-.faq .accordion-container .accordion[aria-expanded=false] {
-  padding-bottom: 0;
-}
-
-.faq .accordion-container .accordion button {
-  width: 100%;
   padding: 1rem 1rem 1rem 0;
   text-align: left;
+  width: 100%;
+  border-bottom: 1px solid #9194a1;
   cursor: pointer;
 }
 
 @media (min-width: 768px) {
-  .faq .accordion-container .accordion button {
+  .faq .accordion-container .accordion {
     font-size: 1rem;
   }
 }
 
-.faq .accordion-container .accordion button svg {
+.faq .accordion-container .accordion:hover {
+  color: #fa5757;
+}
+
+.faq .accordion-container .accordion svg {
   float: right;
   -webkit-transition: .2s ease;
   transition: .2s ease;
 }
 
-.faq .accordion-container .accordion button:hover {
-  color: #fa5757;
+.faq .accordion-container .accordion[aria-expanded=true] {
+  border-bottom: none;
 }
 
-.faq .accordion-container .accordion p {
+.faq .accordion-container .accordion[aria-expanded=true] svg {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.faq .accordion-container .accordion[aria-expanded=true] svg path {
+  stroke: #fa5757;
+}
+
+.faq .accordion-container .accordion-content {
+  text-align: left;
   font-size: .8rem;
-  max-height: 0;
+  height: 0;
   -webkit-transition: .2s ease;
   transition: .2s ease;
+  overflow: hidden;
+}
+
+.faq .accordion-container .accordion-content.active {
+  border-bottom: 1px solid #9194a1;
 }
 
 .faq .primary-btn {

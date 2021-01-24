@@ -190,10 +190,16 @@ a {
     justify-content: center;
     align-items: center;
     opacity: 0;
+    pointer-events: none;
     cursor: pointer;
 
-    &:hover {
-        opacity: 1;
+    &.show {
+        opacity: .7;
+        pointer-events: visible;
+
+        &:hover {
+            opacity: 1;
+        }
     }
 
     i {

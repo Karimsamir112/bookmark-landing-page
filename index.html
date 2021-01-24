@@ -177,36 +177,29 @@
         </div>
 
         <div class="accordion-container">
-            <div class="accordion" role="button" aria-expanded="false">
-                <button>
-                    What is Bookmark?
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="12"><path fill="none" stroke="#5267DF" stroke-width="3" d="M1 1l8 8 8-8"/></svg>
-                </button>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt justo eget ultricies fringilla. Phasellus blandit ipsum quis quam ornare mattis.</p>
-            </div>
-            <div class="accordion" role="button" aria-expanded="false">
-                <button>
-                    How can I request a new browser?
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="12"><path fill="none" stroke="#5267DF" stroke-width="3" d="M1 1l8 8 8-8"/></svg>
-                </button>
-                <p>Vivamus luctus eros aliquet convallis ultricies. Mauris augue massa, ultricies non ligula. Suspendisse imperdiet. Vivamus luctus eros aliquet convallis ultricies. Mauris augue massa, ultricies non ligula. Suspendisse imperdie tVivamus luctus eros aliquet convallis ultricies. Mauris augue massa, ultricies non ligula. Suspendisse imperdiet.</p>
-            </div>
-            <div class="accordion" role="button" aria-expanded="false">
-                <button>
-                    Is there a mobile app?
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="12"><path fill="none" stroke="#5267DF" stroke-width="3" d="M1 1l8 8 8-8"/></svg>
-                </button>
-                <p>Sed consectetur quam id neque fermentum accumsan. Praesent luctus vestibulum dolor, ut condimentum 
-                    urna vulputate eget. Cras in ligula quis est pharetra mattis sit amet pharetra purus. Sed 
-                    sollicitudin ex et ultricies bibendum.</p>
-            </div>
-            <div class="accordion" role="button" aria-expanded="false">
-                <button>
-                    What about other Chromium browsers?
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="12"><path fill="none" stroke="#5267DF" stroke-width="3" d="M1 1l8 8 8-8"/></svg>
-                </button>
-                <p>Integer condimentum ipsum id imperdiet finibus. Vivamus in placerat mi, at euismod dui. Aliquam vitae neque eget nisl gravida pellentesque non ut velit.</p>
-            </div>
+            <button class="accordion" role="button" aria-expanded="false">
+                What is Bookmark?
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="12"><path fill="none" stroke="#5267DF" stroke-width="3" d="M1 1l8 8 8-8"/></svg>
+            </button>
+            <p class="accordion-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt justo eget ultricies fringilla. Phasellus blandit ipsum quis quam ornare mattis.</p>
+    
+            <button class="accordion" role="button" aria-expanded="false">
+                How can I request a new browser?
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="12"><path fill="none" stroke="#5267DF" stroke-width="3" d="M1 1l8 8 8-8"/></svg>
+            </button>
+            <p class="accordion-content">Vivamus luctus eros aliquet convallis ultricies. Mauris augue massa, ultricies non ligula. Suspendisse imperdiet. Vivamus luctus eros aliquet convallis ultricies. Mauris augue massa, ultricies non ligula. Suspendisse imperdie tVivamus luctus eros aliquet convallis ultricies. Mauris augue massa, ultricies non ligula. Suspendisse imperdiet.</p>
+
+            <button class="accordion" role="button" aria-expanded="false">
+                Is there a mobile app?
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="12"><path fill="none" stroke="#5267DF" stroke-width="3" d="M1 1l8 8 8-8"/></svg>
+            </button>
+            <p class="accordion-content">Sed consectetur quam id neque fermentum accumsan. Praesent luctus vestibulum dolor, ut condimentum urna vulputate eget. Cras in ligula quis est pharetra mattis sit amet pharetra purus. Sed sollicitudin ex et ultricies bibendum.</p>
+
+            <button class="accordion" role="button" aria-expanded="false">
+                What about other Chromium browsers?
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="12"><path fill="none" stroke="#5267DF" stroke-width="3" d="M1 1l8 8 8-8"/></svg>
+            </button>
+            <p class="accordion-content">Integer condimentum ipsum id imperdiet finibus. Vivamus in placerat mi, at euismod dui. Aliquam vitae neque eget nisl gravida pellentesque non ut velit.</p>
         </div>
 
         <a href="#" class="cta-btn primary-btn">More Info</a>
@@ -244,10 +237,10 @@
         </div>
 
         <div class="social-media">
-            <a href="#" class="socmed">
+            <a href="#" aria-label="facebook" class="socmed">
                 <i class="fab fa-facebook-square"></i>
             </a>
-            <a href="#" class="socmed">
+            <a href="#" aria-label="twitter" class="socmed">
                 <i class="fab fa-twitter"></i>
             </a>
         </div>
