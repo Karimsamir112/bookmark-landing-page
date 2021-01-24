@@ -1,0 +1,108 @@
+.banner {
+    background-color: $softBlue;
+    padding: 3rem 2rem;
+    text-align: center;
+
+    .banner-inner {
+        width: Min(480px, 100%);
+        margin: 0 auto;
+
+        p, h1 {
+            color: $white;
+        }
+    
+        h1 {
+            font-size: 1.5rem;
+            margin: .5rem 0;
+
+            @include mediaQuery(tablet) {
+                font-size: 2rem;
+            }
+        }
+    
+        p {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: .7rem;
+        }
+    
+        .form {
+            display: grid;
+            grid-gap: 1rem;
+            margin-top: 2rem;
+
+            @include mediaQuery(tablet) {
+                grid-template-columns: 2fr 1fr;
+            }
+    
+            .field {
+                z-index: 99;
+                position: relative;
+    
+                input {
+                    padding: 1rem;
+                    background-color: $white;
+                    width: 100%;
+                    border-radius: 5px;
+    
+                    &::placeholder {
+                        color: $grayishBlue;
+                    }
+    
+                    &[aria-invalid=true] {
+                        border: 2px solid $softRed;
+                        border-radius: 5px 5px 0 0;
+                        background-image: url("/images/icon-error.svg");
+                        background-repeat: no-repeat;
+                        background-position: 96%;
+                    }
+    
+                    &[aria-invalid=false] {
+                        border: 2px solid #0ac40a;
+                        border-radius: 5px 5px 0 0;
+                    }
+                }
+    
+                #result {
+                    @include mediaQuery(tablet) {
+                        position: absolute;
+                        width: 100%;
+                    }
+
+                    &.error {
+                        background-color: $softRed;
+                        color: $white;
+                        font-style: italic;
+                        text-transform: none;
+                        text-align: left;
+                        padding-left: .5rem;
+                        border-radius: 0 0 5px 5px;
+                        letter-spacing: initial;
+                    }
+    
+                    &.valid {
+                        @extend .error;
+                        background-color: #0ac40a;
+                    }
+                }
+            }
+    
+            #submit {
+                font-weight: 500;
+                padding: 1rem;
+                width: 100%;
+                background-color: $softRed;
+                color: $white;
+                border-radius: 5px;
+                z-index: 99;
+                cursor: pointer;
+
+                &:hover {
+                    color: $softRed;
+                    background-color: $white;
+                    box-shadow: 0 0 0 2px $softRed;
+                }
+            }
+        }
+    }
+}

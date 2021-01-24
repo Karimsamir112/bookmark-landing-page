@@ -1,0 +1,64 @@
+.faq {
+    text-align: center;
+
+    .accordion-container {
+        width: Min(550px, 100%);
+        margin: 0 auto;
+
+        .accordion {
+            border-bottom: 1px solid $grayishBlue;
+            overflow: hidden;
+            position: relative;
+            text-align: left;
+
+            &[aria-expanded=true] {
+                padding-bottom: 1rem;
+
+                button {
+                    svg {
+                        transform: rotate(180deg);
+
+                        path {
+                            stroke: $softRed;
+                        }
+                    }
+                }
+            }
+
+            &[aria-expanded=false] {
+                padding-bottom: 0;
+            }
+
+            button {
+                width: 100%;
+                padding: 1rem 1rem 1rem 0;
+                text-align: left;
+                cursor: pointer;
+
+                @include mediaQuery(tablet) {
+                    font-size: 1rem;
+                }
+
+                svg {
+                    float: right;
+                    transition: .2s ease;
+                }
+
+                &:hover {
+                    color: $softRed;
+                }
+            }
+
+            p {
+                font-size: .8rem;
+                max-height: 0;
+                transition: .2s ease;
+            }
+        }
+    }  
+    
+    .primary-btn {
+        margin: 2rem 0;
+        position: relative;
+    }
+}

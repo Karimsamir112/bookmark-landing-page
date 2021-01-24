@@ -1,0 +1,58 @@
+.extension {
+    .grid-three-col {
+        display: grid;
+        grid-gap: 1.5rem;
+        margin: 2rem auto;
+        width: Min(964px, 100%);
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+        @include mediaQuery(desktop-sm) {
+            grid-template-rows: 400px;
+        }
+
+        .card {
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 0 10px 0 $lightGray;
+            background-image: url("/images/bg-dots.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position-y: 72%;
+            width: 90%;
+            margin: 0 auto;
+
+            @include mediaQuery(tablet) {
+                width: 100%;
+            }
+
+            @include mediaQuery(desktop-sm) {
+                &:first-child {
+                    align-self: start;
+                }
+
+                &:nth-child(2) {
+                    align-self: center;
+                }
+
+                &:last-child {
+                    align-self: end;
+                }
+            }
+
+            h2 {
+                font-size: 1.2rem;
+                margin-top: 1rem;
+            }
+
+            p {
+                margin: .5rem 0 2rem;
+            }
+
+            .primary-btn {
+                margin-top: 2rem;
+                width: 100%;
+                position: relative;
+            }
+        }
+    }
+}

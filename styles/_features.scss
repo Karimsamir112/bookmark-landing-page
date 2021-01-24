@@ -1,0 +1,116 @@
+.features {
+    position: relative;
+
+    .tab-buttons {
+        @include mediaQuery(tablet) {
+            display: flex;
+            width: Min(700px, 100%);
+            margin: 1rem auto;
+        }
+
+        .tab-btn {
+            width: 100%;
+            padding: 1rem;
+            border-bottom: 1px solid $grayishBlue;
+            color: $grayishBlue;
+            position: relative;
+            cursor: pointer;
+
+            &:hover {
+                color: $softRed;
+            }
+
+            @include mediaQuery(tablet) {
+                padding: 1.5rem;
+                font-size: .9rem;
+            }
+
+            &:first-child {
+                border-top: 1px solid $grayishBlue;
+
+                @include mediaQuery(tablet) {
+                    border-top: none;
+                }
+            }
+
+            &[aria-selected=true] {
+                color: $veryDarkBlue;
+
+                &::after {
+                    content: "";
+                    width: 110px;
+                    height: 3px;
+                    background-color: #fa5757;
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+
+                    @include mediaQuery(tablet) {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    .image-bg {
+        position: absolute;
+        // top: 50%;
+        bottom: 30%;
+        left: 0;
+        background: $softBlue;
+        width: 70%;
+        height: 200px;
+        border-radius: 0 0 5rem 0;
+
+        @include mediaQuery(tablet) {
+            bottom: 10%;
+            width: 40%;
+        }
+
+        @include mediaQuery(desktop-sm) {
+            height: 300px;
+        }
+    }
+
+    .tab-container {
+        overflow-x: hidden;
+        position: relative;
+
+        .tab-slider {
+            width: 300%;
+            display: flex;
+            transition: .2s ease;
+
+            .grid-two-col {
+                flex-basis: 100%;
+
+                .text {
+                    @include mediaQuery(tablet) {
+                        order: 1;
+                    }
+
+                    h1 {
+                        @include mediaQuery(desktop-sm) {
+                            font-size: 2rem;
+                        }
+                    }
+
+                    .primary-btn {
+                        display: none;
+
+                        @include mediaQuery(tablet) {
+                            display: inline-block;
+                        }
+                    }
+                }
+                
+                .image {
+                    display: flex;
+                    align-items: flex-end;
+                }
+            }
+        }
+    }
+}

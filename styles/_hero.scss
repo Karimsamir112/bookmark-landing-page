@@ -1,0 +1,245 @@
+.hero {
+    //min-height: 100vh;
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+
+        .logo {
+            z-index: 999;
+
+            .primary-logo {
+                max-width: 100%;
+                display: block;
+            }
+
+            .white-version {
+                display: none;
+            }
+
+            &.active {
+                .primary-logo {
+                    display: none;
+                }
+
+                .white-version {
+                    display: block;
+                }
+            }
+        }
+
+        .navicon {
+            z-index: 999;
+            cursor: pointer;
+
+            @include mediaQuery(desktop-sm) {
+                display: none;
+            }
+
+            span {
+                display: block;
+                width: 16px;
+                height: 2px;
+                background-color: $veryDarkBlue;
+                transition: .2s ease;
+                position: relative;
+
+                &:first-child {
+                    transform-origin: 4px;
+                }
+
+                &:last-child {
+                    transform-origin: 6px 2px;
+                }
+            }
+
+            &[aria-expanded=false] {
+                span {
+                    margin-bottom: 3px;
+                }
+            }
+
+            &[aria-expanded=true] {
+                span {
+                    background-color: $white;
+                }
+
+                span:first-child {
+                    transform: rotate(45deg);
+                }
+
+                span:nth-child(2) {
+                    opacity: 0;
+                }
+
+                span:last-child {
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+
+        .mobile-menu {
+            &[aria-expanded=false] {
+                display: none;
+            }
+
+            &[aria-expanded=true] {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translate(-50%, 120%);
+                z-index: 999;
+                width: 100%;
+                height: 70vh;
+
+                .mobile-links {
+                    text-align: center;
+                    width: 100%;
+
+                    li {
+                        padding: 1.2rem;
+                        border-top: 1px solid $grayishBlue;
+
+                        &:nth-child(3) {
+                            border-bottom: 1px solid $white;
+                        }
+
+                        a {
+                            color: $white;
+                            letter-spacing: 1px;
+                            font-size: 1.2rem;
+
+                            &:hover {
+                                color: $softRed;
+                            }
+                        }
+
+                        &.login {
+                            border: 2px solid $white;
+                            border-radius: 6px;
+                            margin-top: 1.5rem;
+                            cursor: pointer;
+
+                            &:hover {
+                                background-color: $white;
+
+                                a {
+                                    color: $softRed;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            opacity: 0;
+            transition: .2s ease;
+
+            &.active {
+                opacity: 1;
+                background-color: $veryDarkBlue;
+                opacity: .95;
+                z-index: 1;
+            }
+        }
+
+        .desktop-menu {
+            display: none;
+
+            @include mediaQuery(desktop-sm) {
+                display: block;
+                z-index: 999;
+
+                .desktop-links {
+                    display: flex;
+                    align-items: center;
+
+                    li {
+                        padding: 0 1rem;
+                        border: 2px solid transparent;
+
+                        a {
+                            font-size: .8rem;
+                            color: $veryDarkBlue;
+
+                            &:hover {
+                                color: $softRed;
+                            }
+                        }
+
+                        &.login {
+                            padding: .5rem 1.5rem;
+                            margin-left: 1rem;
+                            background-color: $softRed;
+                            border-radius: 5px;
+                            box-shadow: 0 3px 5px 0 #e8edf9;
+                            cursor: pointer;
+                            
+                            a {
+                                color: $white;
+                            }
+
+                            &:hover {
+                                border: 2px solid $softRed;
+                                background-color: $white;
+
+                                a {
+                                    color: $softRed
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .grid-two-col {
+        .text {
+            h1 {
+                font-size: 2rem;
+
+                @include mediaQuery(desktop-sm) {
+                    font-size: 2.5rem;
+                }
+            }
+        }
+
+        .image {
+            img {
+                @include mediaQuery(desktop-sm) {
+                    transform: scale(1.1) translateX(10%);
+                }
+            }
+
+            .image-bg {
+                position: absolute;
+                right: 0;
+                bottom: 0%;
+                transform: translateX(20%);
+                border-radius: 0 0 0 5rem;
+
+                @include mediaQuery(desktop-sm) {
+                    height: 200px;
+                }
+
+                @include mediaQuery(desktop-md) {
+                    height: 300px;
+                    transform: translateX(30%);
+                }
+            }
+        }
+    }
+}
